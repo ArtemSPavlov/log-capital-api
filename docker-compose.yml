@@ -1,0 +1,29 @@
+services:
+  api:
+    build: ./api/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - nats
+    environment:
+      SECRET: verysecretstring
+
+  fruits:
+    build: ./fruits/
+    depends_on:
+      - postgres
+      - nats
+
+  postgres:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: fruits
+
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
