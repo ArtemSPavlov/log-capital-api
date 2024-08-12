@@ -1,7 +1,7 @@
 Запуск:
 docker compose up -d
 
-Апи поднимается на http:/localhost:3000/
+Апи поднимается на GET: http:/localhost:3000/fruits
 
 Авторизация через Bearer token.
 
